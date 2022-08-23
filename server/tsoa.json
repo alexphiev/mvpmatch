@@ -1,0 +1,18 @@
+{
+  "entryFile": "src/index.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "spec": {
+    "outputDirectory": "public",
+    "specVersion": 3,
+    "securityDefinitions": {
+      "JWT":     {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Bearer <JWT>"
+      }
+    },
+    "security": {
+      "jwt": []
+    }
+  }
+}

@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:12
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=mvpmatch
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_DB=mvpmatch
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - API_KEY=9728d298-825c-4269-925a-7f376910396d
